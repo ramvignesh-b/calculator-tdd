@@ -11,7 +11,7 @@ export class Calculator {
         }
         const numbers = input.split(delimiter);
         let negativeNumbers = "";
-        sum = numbers.map(number => {
+        sum = numbers.filter(number => parseInt(number) <= 1000).map(number => {
             if (parseInt(number) < 0) {
                 negativeNumbers += number + ",";
             }
