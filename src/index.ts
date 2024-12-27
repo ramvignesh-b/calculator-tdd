@@ -4,6 +4,7 @@ export class Calculator {
         if (input === "") {
             return 0;
         }
+        sum = parseInt(input);
         return sum;
     }
 }
