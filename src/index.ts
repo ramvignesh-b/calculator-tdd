@@ -4,7 +4,11 @@ export class Calculator {
         if (input === "") {
             return 0;
         }
-        sum = parseInt(input);
+        const numbers = input.split(",");
+        if (numbers.length === 1) {
+            return parseInt(numbers[0]);
+        }
+        sum = parseInt(numbers[0]) + parseInt(numbers[1]);
         return sum;
     }
 }
