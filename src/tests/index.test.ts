@@ -28,6 +28,7 @@ describe("Calculator", () => {
 
     it ("should throw an exception for a negative number", () => {
         expect(() => calculator.add("-1")).toThrow("negative numbers not allowed: -1");
+        expect(() => calculator.add("1,-1")).toThrow("negative numbers not allowed: -1");
     });
 });
 
