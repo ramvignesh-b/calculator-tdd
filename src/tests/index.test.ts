@@ -25,5 +25,9 @@ describe("Calculator", () => {
     it ("should handle custom delimiters and return the sum of all the numbers", () => {
         expect(calculator.add("//;\n1;2")).toBe(3);
     });
+
+    it ("should throw an exception for a negative number", () => {
+        expect(() => calculator.add("-1")).toThrow("negative numbers not allowed: -1");
+    });
 });
 
