@@ -4,12 +4,12 @@ export class Calculator {
         if (input === "") {
             return 0;
         }
+        let delimiter: RegExp = new RegExp("[\n,]", "g");
         if (input.startsWith("//")) {
-            let delimiter = input[2];
-            input = input.substring(4).replace(delimiter, ",");
-            
+            delimiter = new RegExp(`[\n,${input[2]}]`, "g");
+            input = input.slice(4);
         }
-        const numbers = input.replace(/\n/g, ",").split(",");
+        const numbers = input.split(delimiter);
         sum = numbers.map(number => parseInt(number)).reduce((a, b) => a + b, 0);
         return sum;
     }
