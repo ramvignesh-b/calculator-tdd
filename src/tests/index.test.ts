@@ -36,7 +36,7 @@ describe("Calculator", () => {
     });
 
     it("should ignore numbers bigger than 1000", () => {
-        expect(() => calculator.add("2,1001, 1002")).toBe(2);
+        expect(calculator.add("2,1001,1002")).toBe(2);
     });
 
 });
