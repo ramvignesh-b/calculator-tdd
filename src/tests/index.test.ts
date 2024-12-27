@@ -43,5 +43,10 @@ describe("Calculator", () => {
         expect(calculator.add("//[***]\n1***2***3")).toBe(6);
     });
 
+    it("should handle more than one custom delimiter and return the sum of all the numbers", () => {
+        expect(calculator.add("//[*][%]\n1*2%3")).toBe(6);
+        expect(calculator.add("//[***][%]\n1***2%3")).toBe(6);
+    });
+
 });
 
