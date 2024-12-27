@@ -8,7 +8,7 @@ export class Calculator {
         if (numbers.length === 1) {
             return parseInt(numbers[0]);
         }
-        sum = parseInt(numbers[0]) + parseInt(numbers[1]);
+        sum = numbers.map(number => parseInt(number)).reduce((a, b) => a + b, 0);
         return sum;
     }
 }
