@@ -10,12 +10,16 @@ export class Calculator {
             input = input.slice(4);
         }
         const numbers = input.split(delimiter);
+        let negativeNumbers = "";
         sum = numbers.map(number => {
             if (parseInt(number) < 0) {
-                throw new Error(`negative numbers not allowed: ${number}`);
+                negativeNumbers += number + ",";
             }
             return parseInt(number);
         }).reduce((a, b) => a + b, 0);
+        if (negativeNumbers !== "") {
+            throw "negative numbers not allowed: " + negativeNumbers;
+        }
         return sum;
     }
 }
