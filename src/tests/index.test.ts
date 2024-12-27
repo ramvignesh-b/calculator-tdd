@@ -39,5 +39,9 @@ describe("Calculator", () => {
         expect(calculator.add("2,1001,1002")).toBe(2);
     });
 
+    it("should handle delimiters of multiple length and return the sum of all the numbers", () => {
+        expect(calculator.add("//[***]\n1***2***3")).toBe(6);
+    });
+
 });
 
