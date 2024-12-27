@@ -4,6 +4,9 @@ export class Calculator {
         if (input === "") {
             return 0;
         }
+        if (parseInt(input) < 0) {
+            throw new Error(`negative numbers not allowed: ${input}`);
+        }
         let delimiter: RegExp = new RegExp("[\n,]", "g");
         if (input.startsWith("//")) {
             delimiter = new RegExp(`[\n,${input[2]}]`, "g");
