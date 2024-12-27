@@ -17,5 +17,9 @@ describe("Calculator", () => {
     it("should return the sum of all the numbers for a multiple number input", () => {
         expect(calculator.add("2,3,4,5")).toBe(14);
     });
+
+    it("should return the sum of all the numbers for a multiple number input with new lines", () => {
+        expect(calculator.add("2,3\n4,5")).toBe(14);
+    });
 });
 
