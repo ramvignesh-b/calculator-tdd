@@ -5,9 +5,6 @@ export class Calculator {
             return 0;
         }
         const numbers = input.split(",");
-        if (numbers.length === 1) {
-            return parseInt(numbers[0]);
-        }
         sum = numbers.map(number => parseInt(number)).reduce((a, b) => a + b, 0);
         return sum;
     }
