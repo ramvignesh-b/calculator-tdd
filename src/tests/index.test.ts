@@ -9,5 +9,9 @@ describe("Calculator", () => {
     it("should return the number itself for a single number input", () => {
         expect(calculator.add("2")).toBe(2);
     });
+
+    it("should return the sum of two numbers for a two number input", () => {
+        expect(calculator.add("2,3")).toBe(5);
+    });
 });
 
