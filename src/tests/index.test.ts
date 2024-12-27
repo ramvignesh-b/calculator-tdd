@@ -21,5 +21,9 @@ describe("Calculator", () => {
     it("should return the sum of all the numbers for a multiple number input with new lines", () => {
         expect(calculator.add("2,3\n4,5")).toBe(14);
     });
+
+    it ("should handle custom delimiters and return the sum of all the numbers", () => {
+        expect(calculator.add("//;\n1;2")).toBe(3);
+    });
 });
 
