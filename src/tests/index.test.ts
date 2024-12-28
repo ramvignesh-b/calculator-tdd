@@ -37,6 +37,7 @@ describe("Calculator", () => {
 
     it("should ignore numbers bigger than 1000", () => {
         expect(calculator.add("2,1001,1002")).toBe(2);
+        expect(calculator.add("2,1001,1000")).toBe(1002);
     });
 
     it("should handle delimiters of multiple length and return the sum of all the numbers", () => {
@@ -48,5 +49,21 @@ describe("Calculator", () => {
         expect(calculator.add("//[***][%]\n1***2%3")).toBe(6);
     });
 
+    // * Few more edge cases
+    it("should handle multiple consecutive delimiters and ignore empty splits", () => {
+        expect(calculator.add("1,,2")).toBe(3);
+    });
+
+    it("should handle overlapping custom delimiters", () => {
+        expect(calculator.add("//[*][**]\n1*2**3")).toBe(6);
+    });
+
+    it("should return 0 if input only contains delimiters", () => {
+        expect(calculator.add("//[***][%]\n***%%%")).toBe(0);
+    });
+
+    it("should handle whitespace delimiters", () => {
+        expect(calculator.add("//[ ]\n1 2 3")).toBe(6);
+    });  
 });
 
