@@ -5,15 +5,28 @@ export class Calculator {
             return 0;
         }
         let delimiter: RegExp = new RegExp("[\n,]", "g");
-        
+
         if (input.startsWith("//[")) {
-            const multiDelimiter = input.slice(4, input.indexOf("]"));
-            let escapedMultiDelimiter = "";
-            for (let i = 0; i < multiDelimiter.length; i++) {
-                escapedMultiDelimiter += `\\${multiDelimiter[i]}`;
+            if ((input.match(new RegExp(/\[(.*?)\]/, "g"))?.length ?? 0) > 1) {
+                // multiple delimiters enclosed in []
+                const multiDelimitersList = input.match(new RegExp(/\[(.*?)\]/, "g"))?.map(match => match.replace(new RegExp(/[\[\]]/, "g"), ""));
+                let escapedMultiDelimiter = "";
+                multiDelimitersList?.map(_delimiter => {
+                    for (let i = 0; i < _delimiter.length; i++) {
+                        escapedMultiDelimiter += `\\${_delimiter[i]}`;
+                    }   
+                });
+                delimiter = new RegExp(`[\n,${escapedMultiDelimiter}]`, "g");
+                input = input.slice(input.lastIndexOf("]") + 1);
+            } else {
+                const multiDelimiter = input.slice(4, input.indexOf("]"));
+                let escapedMultiDelimiter = "";
+                for (let i = 0; i < multiDelimiter.length; i++) {
+                    escapedMultiDelimiter += `\\${multiDelimiter[i]}`;
+                }
+                delimiter = new RegExp(`[\n,${escapedMultiDelimiter}]`, "g");
+                input = input.slice(input.indexOf("]") + 1);
             }
-            delimiter = new RegExp(`[\n,${escapedMultiDelimiter}]`, "g");
-            input = input.slice(input.indexOf("]") + 1);
         } else if (input.startsWith("//")) {
             delimiter = new RegExp(`[\n,${input[2]}]`, "g");
             input = input.slice(4);
