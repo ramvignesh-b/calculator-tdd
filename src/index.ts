@@ -1,11 +1,12 @@
 export class Calculator {
     add(input: string): number {
-        let sum = 0;
+        let result = 0;
         if (input === "") {
             return 0;
         }
         let delimiter: RegExp = new RegExp("[\n,]", "g");
-
+        let operation: 'add' | 'multiply' = "add";
+        // TODO: COde split
         if (input.startsWith("//[")) {
             const multiDelimitersList = input.match(new RegExp(/\[(.*?)\]/, "g"))?.map(match => match.replace(new RegExp(/[\[\]]/, "g"), ""));
             let escapedMultiDelimiter = "";
@@ -18,20 +19,32 @@ export class Calculator {
             input = input.slice(input.lastIndexOf("]") + 1);
         } else if (input.startsWith("//")) {
             delimiter = new RegExp(`[\n,${input[2]}]`, "g");
+            if (input[2] === '*') {
+                operation = 'multiply';
+            }
             input = input.slice(4);
         }
 
         const numbers = input.split(delimiter);
         let negativeNumbers = "";
-        sum = numbers.filter(number => parseInt(number) <= 1000).map(number => {
+
+        result = numbers.filter(number => parseInt(number) <= 1000).map(number => {
             if (parseInt(number) < 0) {
                 negativeNumbers += number + ",";
             }
             return parseInt(number);
-        }).reduce((a, b) => a + b, 0);
+        }).reduce((a, b) => {
+            if (operation === 'multiply') {
+                return a * b;
+            } else {
+                return a + b;
+            }
+        }, operation === "multiply" ? 1 : 0);
+
+
         if (negativeNumbers !== "") {
             throw "negative numbers not allowed: " + negativeNumbers;
         }
-        return sum;
+        return result;
     }
 }
