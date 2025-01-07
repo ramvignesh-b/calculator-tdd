@@ -18,15 +18,11 @@ export class Calculator {
             operation = input[2] === '*' ? "multiply" : "add";
         }
 
-        const numbers = input.split(delimiter);
-        let negativeNumbers: string[] = [];
+        let numbers = input.split(delimiter).map(number => parseInt(number));
+        let negativeNumbers: number[] = [];
+        negativeNumbers = numbers.filter(number => number < 0);
 
-        result = numbers.filter(number => parseInt(number) <= 1000).map(number => {
-            if (parseInt(number) < 0) {
-                negativeNumbers.push(number);
-            }
-            return parseInt(number);
-        }).reduce((a, b) => (operation === 'multiply') ? a * b : a + b, (operation === "multiply") ? 1 : 0);
+        result = numbers.filter(number => number <= 1000).reduce((a, b) => (operation === 'multiply') ? a * b : a + b, (operation === "multiply") ? 1 : 0);
 
         if (negativeNumbers.length > 0) {
             throw "negative numbers not allowed: " + negativeNumbers.join(",");
