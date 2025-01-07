@@ -26,6 +26,10 @@ describe("Calculator", () => {
         expect(calculator.add("//;\n1;2")).toBe(3);
     });
 
+    it("should multiply the numbers when the delimiter is *", () => {
+        expect(calculator.add("//*\n1*2*3*4")).toBe(24);
+    })
+
     it("should throw an exception for a negative number", () => {
         expect(() => calculator.add("-1")).toThrow("negative numbers not allowed: -1");
         expect(() => calculator.add("1,-1")).toThrow("negative numbers not allowed: -1");
