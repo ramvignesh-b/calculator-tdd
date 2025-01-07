@@ -1,7 +1,10 @@
 import { Calculator } from "../index";
 
 describe("Calculator", () => {
-    const calculator = new Calculator();
+    let calculator: Calculator;
+    beforeEach(() => {
+        calculator = new Calculator();
+    })
     it("should return 0 for empty string input", () => {
         expect(calculator.add("")).toBe(0);
     });
