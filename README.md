@@ -8,7 +8,7 @@ This calculator handles string inputs with various delimiters and demonstrates T
 
 ## Implemented Features
 
-1. Basic string-to-number addition
+1. Basic string-to-number addition (by default)
 2. Multiple numbers support, initially delimited by `,`
 3. Handle new-line `\n` between numbers
 3. Custom delimiter support, when input starts with `//`
@@ -17,6 +17,7 @@ This calculator handles string inputs with various delimiters and demonstrates T
 6. **[Bonus]** Handle custom delimiters of multiple lengths
 7. **[Bonus]** Handle multiple custom delimiters
 8. **[Bonus]** Handle multiple custom delimiters of multiple lengths
+9. Perform multiplication on `*` delimiter
 
 ## Technical Stack
 
@@ -68,6 +69,9 @@ calculator.add("//;\n1;2;3");  // Returns 6
 
 // Multiple custom delimiters
 calculator.add("//[***][%%%]\n1***2%%%3");  // Returns 6
+
+// Multiplication usage
+calculator.add("//*\n1*2*3*4");  // Returns 24
 ```
 
 ## Running Tests
