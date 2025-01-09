@@ -30,32 +30,6 @@ This calculator handles string inputs with various delimiters and demonstrates T
 2. Run `npm install` to install dependencies
 3. Run `npm test` to execute test suite
 
-## TDD Learning Points
-
-### 1. Incremental Development
-The calculator was built iteratively:
-- Started with simplest case (empty string)
-- Added single number support
-- Evolved to handle multiple numbers
-- Implemented custom delimiters
-- Added validation rules via Regular Expression
-
-### 2. Test-First Approach
-Every feature was developed following the clean TDD principles:
-```md
-1. Write failing test
-2. Implement minimal code
-3. Refactor while keeping tests green
-```
-
-### 3. Edge Cases
-The implementation handles:
-- Empty strings
-- Custom delimiters
-- Multiple delimiters
-- Negative numbers
-- Numbers > 1000
-
 ## Usage Example
 
 ```typescript
@@ -90,9 +64,57 @@ The project includes GitHub Actions workflow that:
 - Runs on multiple Node.js versions (18.x, 20.x, 22.x)
 - Executes test suite on every push and PR
 
+# Takeaways
+
+## TDD Learning Points
+### 1. Incremental Development
+The calculator was built iteratively:
+- Started with simplest case (empty string)
+- Added single number support
+- Evolved to handle multiple numbers
+- Implemented custom delimiters
+- Added validation rules via Regular Expression
+
+### 2. Test-First Approach
+Every feature was developed following the clean TDD principles:
+```md
+1. Write failing test
+2. Implement minimal code
+3. Refactor while keeping tests green
+```
+
+### 3. Edge Cases
+The implementation handles:
+- Empty strings
+- Custom delimiters
+- Multiple delimiters
+- Negative numbers
+- Numbers > 1000
+
+
 ## Development Guidelines
 
 1. Always write tests first
 2. Keep functions focused and small
 3. Consider edge cases in tests
 4. Refactor after getting green tests
+
+## SOLID Foundation
+### 1. Single Responsibility Principle
+Each class (methods in this case) has a single responsibility, which is to handle a specific task.
+
+### 2. Open-Closed Principle
+Software entities (classes, modules, methods, etc.) should be open for extension, but closed for modification.
+
+### 3. Liskov Substitution Principle
+Subtypes must be substitutable for their base types.
+
+### 4. Interface Segregation Principle
+Clients should not be forced to depend on methods they do not use.
+
+### 5. Dependency Inversion Principle
+High-level modules should not depend on low-level modules. Both should depend on abstractions.
+
+## Resources
+- [Test-Driven Development Kata 1](https://osherove.com/tdd-kata-1/)
+- [Clean Code Blog - SOLID](https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html)
